@@ -33,6 +33,10 @@ public class HighArrayApp {
 		arr.delete(99);
 		
 		arr.display();
+		
+		System.out.println("Return max (-1 means empty) " + arr.returnMax());
+		arr.display();
+
 	}
 
 }

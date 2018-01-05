@@ -29,6 +29,34 @@ public class HighArray {
 		nElems++;
 	}
 	
+	public long returnMax() {
+		long max;
+		if(nElems == 0) {
+			return -1;
+		}else {
+			max = removeMax();
+		}
+		return max;
+	}
+	public long removeMax() {
+		long[] tmpa = a;
+		int j;
+		
+		for(j=0; j<nElems; j++) { //O(n2)
+			for(int k=j+1; k<nElems; k++) {
+				if(tmpa[j] > tmpa[k] ) { //swap them
+					long temp;
+					temp = tmpa[j];
+					tmpa[j] = tmpa[k];
+					tmpa[k] = temp;
+				}
+			}
+		}
+		a = tmpa; //copy array back
+		nElems--;
+		return a[nElems];
+	}
+	
 	public boolean delete(long value) {
 		int j;
 		
