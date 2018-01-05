@@ -30,18 +30,31 @@ public class HighArray {
 	}
 	
 	public long returnMax() {
-		int j;
+		long max;
 		if(nElems == 0) {
 			return -1;
 		}else {
-			long temp = 0;
-			for(j=0; j<nElems; j++) {
-				if(temp < a[j]) {
-					temp = a[j];
+			max = removeMax();
+		}
+		return max;
+	}
+	public long removeMax() {
+		long[] tmpa = a;
+		int j;
+		
+		for(j=0; j<nElems; j++) { //O(n2)
+			for(int k=j+1; k<nElems; k++) {
+				if(tmpa[j] > tmpa[k] ) { //swap them
+					long temp;
+					temp = tmpa[j];
+					tmpa[j] = tmpa[k];
+					tmpa[k] = temp;
 				}
 			}
-			return temp;
 		}
+		a = tmpa; //copy array back
+		nElems--;
+		return a[nElems];
 	}
 	
 	public boolean delete(long value) {

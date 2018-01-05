@@ -35,6 +35,8 @@ public class HighArrayApp {
 		arr.display();
 		
 		System.out.println("Return max (-1 means empty) " + arr.returnMax());
+		arr.display();
+
 	}
 
 }
