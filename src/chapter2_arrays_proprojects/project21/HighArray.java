@@ -29,6 +29,21 @@ public class HighArray {
 		nElems++;
 	}
 	
+	public long returnMax() {
+		int j;
+		if(nElems == 0) {
+			return -1;
+		}else {
+			long temp = 0;
+			for(j=0; j<nElems; j++) {
+				if(temp < a[j]) {
+					temp = a[j];
+				}
+			}
+			return temp;
+		}
+	}
+	
 	public boolean delete(long value) {
 		int j;
 		
