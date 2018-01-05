@@ -5,7 +5,9 @@ public class HighArrayApp {
 	public static void main(String[] args) {
 		int maxSize = 100; 
 		HighArray arr;
+		HighArray arr2;
 		arr = new HighArray(maxSize);
+		arr2 = new HighArray(maxSize);
 		
 		arr.insert(77);
 		arr.insert(99);
@@ -34,9 +36,15 @@ public class HighArrayApp {
 		
 		arr.display();
 		
-		System.out.println("Return max (-1 means empty) " + arr.returnMax());
-		arr.display();
-
+		long temp = 0;
+		
+		while(temp != -1) { //insert inverse order without modifying HighArray whilst returnMax is returning keys
+			temp = arr.returnMax();
+			if(temp != -1) {
+				arr2.insert(temp);
+			}
+		}
+		arr2.display();
 	}
 
 }
