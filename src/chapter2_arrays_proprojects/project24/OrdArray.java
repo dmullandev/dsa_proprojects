@@ -3,6 +3,8 @@ package chapter2_arrays_proprojects.project24;
 //Modify the orderedArray.java program (Listing 2.4) so that the insert() and delete() routines,
 //as well as find(), use binary search, as suggested in the text.
 
+
+
 public class OrdArray {
 	private long[] a;
 	private int nElems;
