@@ -23,6 +23,11 @@ public class OrdArray {
 	public int size() {
 		return nElems;
 	}
+	//todo
+	public void merge(OrdArray a, OrdArray b) {
+		System.out.println(a.a[1]);
+		System.out.println(b.a[1]);
+	}
 	
 	public int find(long searchKey) {
 		int lowerBound = 0;
