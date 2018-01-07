@@ -1,5 +1,8 @@
 package chapter2_arrays_proprojects.project24;
 
+//Modify the orderedArray.java program (Listing 2.4) so that the insert() and delete() routines,
+//as well as find(), use binary search, as suggested in the text.
+
 public class OrdArray {
 	private long[] a;
 	private int nElems;
@@ -25,7 +28,7 @@ public class OrdArray {
 				return curIn;
 			}else if(lowerBound > upperBound) {
 				return nElems;
-			} else {
+			}else {
 				if(a[curIn] < searchKey) {
 					lowerBound = curIn + 1;
 				}else {
@@ -36,30 +39,60 @@ public class OrdArray {
 	}
 	
 	public void insert(long value) {
-		int j;
-		for(j=0; j<nElems; j++) {
-			if(a[j] > value) {
+		int lowerBound = 0;
+		int upperBound = nElems-1;
+		int curIn = 0;
+		
+		while(true) {
+			
+			if(lowerBound > upperBound) { // base case
 				break;
-			}
-		for(int k=nElems; k>j; k--) {
+			}			
+			curIn = (lowerBound + upperBound) /2;
+			
+			if(a[curIn] < value) {
+				lowerBound = curIn + 1;
+				curIn++;
+			}else {
+				upperBound = curIn - 1;
+			}						
+		}
+		for(int k=nElems; k>curIn; k--) {
 			a[k] = a[k-1];
 		}
-		a[j] = value;
+		a[curIn] = value;
 		nElems++;
-		}
 	}
 	
-	public boolean delete(long value) {
-		int j = find(value);
-		if(j==nElems) {
+	
+	public boolean delete(long value) {	
+		if (nElems==0) { // base case
 			return false;
-		}else {
-			for(int k=j; k<nElems; k++) {
-				a[k] = a[k+1];
-			}
-			nElems--;
-			return true;
 		}
+		int lowerBound = 0;
+		int upperBound = nElems-1;
+		int curIn;
+		
+		while(true) {
+			curIn = (lowerBound + upperBound) /2;
+			
+			if(a[curIn]==value) {
+				break;
+			}else if(lowerBound > upperBound) {
+				return false;
+			}else {
+				if(a[curIn] < value) {
+					lowerBound = curIn + 1;
+				}else {
+					upperBound = curIn -1;
+				}
+			}
+		}
+		for(int k=curIn; k<nElems; k++) {
+			a[k] = a[k+1];
+		}
+		nElems--;
+		return true;
 	}
 	
 	public void display() {
