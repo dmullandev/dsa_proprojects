@@ -19,6 +19,39 @@ public class HighArray {
 		nElems = 0;
 	}
 	
+	public void noDups() {
+		int dupesCount = 0;
+		for(int i=0;i<nElems; i++) { //step through array 
+			if(a[i]== a[i+1]) { //prepare to search for duplicates
+				int k=i;
+				k+=1;
+				while(true) { //iterate through duplicates
+					if(a[k] == a[i]) {
+						a[k] = 111;
+						dupesCount++; //increment count
+					}else {
+						break;
+					}
+					k++;
+				}
+				i=k-1;//set index infront of duplicates
+			}
+		}
+		
+		long[] b = new long[nElems-dupesCount]; //create second array to move non-dupes too
+		int bDex = 0;
+		
+		for(int i = 0; i<nElems; i++) {
+			if(a[i] != 111) {
+				b[bDex] = a[i];
+				bDex++;
+			}
+		}
+		nElems = b.length;
+		a = b;
+		
+	}
+	
 	public boolean find(long searchKey) {
 		int j;
 		for(j=0; j<nElems;j++) {
