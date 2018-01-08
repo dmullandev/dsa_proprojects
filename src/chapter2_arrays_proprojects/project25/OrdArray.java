@@ -23,10 +23,26 @@ public class OrdArray {
 	public int size() {
 		return nElems;
 	}
-	//todo
-	public void merge(OrdArray a, OrdArray b) {
-		System.out.println(a.a[1]);
-		System.out.println(b.a[1]);
+	
+	public void merge(OrdArray sourceArr, OrdArray sourceArr2) {
+		int size1 = sourceArr.size();
+		int size2 = sourceArr2.size();
+		int sourceArrIndex = 0, sourceArr2Index = 0;
+		
+		while( sourceArrIndex < size1 && sourceArr2Index < size2) { //while both arrays not empty
+			if(sourceArr.a[sourceArrIndex] < sourceArr2.a[sourceArr2Index]) {
+				a[nElems++] = sourceArr.a[sourceArrIndex++];
+			}else {
+				a[nElems++] = sourceArr2.a[sourceArr2Index++];
+			}
+		}
+		
+		while (sourceArrIndex < size1) { //until first source array empty
+			a[nElems++] = sourceArr.a[sourceArrIndex++];
+		}
+		while (sourceArr2Index < size2) { //until second source array empty
+			a[nElems++] = sourceArr2.a[sourceArr2Index++];
+		}
 	}
 	
 	public int find(long searchKey) {

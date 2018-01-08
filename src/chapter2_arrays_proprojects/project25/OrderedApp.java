@@ -18,21 +18,23 @@ public class OrderedApp {
 		
 		int maxsize = rand.nextInt(20); 
 		int maxsize2 = rand.nextInt(20);
-		
+		maxsize += 1;
+		maxsize2 += 1;
 		OrdArray arr = new OrdArray(maxsize); //source array 1
 		OrdArray arr2 = new OrdArray(maxsize2); //source array 2
-		OrdArray arr3 = new OrdArray(maxsize + maxsize); //destination array
+		OrdArray arr3 = new OrdArray(maxsize + maxsize2); //destination array
 
-		for(int k=0;k<maxsize;k++) {
+		for(int k=0;k<maxsize;k++) { //fill first source
 			arr.insert(rand.nextInt(99));
 		}
 		arr.display();
 		
-		for(int k=0;k<maxsize2;k++) {
+		for(int k=0;k<maxsize2;k++) { // fill second source
 			arr2.insert(rand.nextInt(99));
 		}
 		arr2.display();
 		
+		System.out.println();
 		arr3.merge(arr, arr2);
 		arr3.display();
 		
