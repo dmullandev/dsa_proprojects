@@ -23,6 +23,8 @@ public class InsertSortApp {
 		arr.insertionSort();
 		
 		arr.display();
+		
+		System.out.println(arr.median());
 	}
 
 }
