@@ -1,4 +1,4 @@
-package chapter3_simplesorting_proprojects.project32;
+package chapter3_simplesorting_proprojects.project33;
 
 public class InsertSortApp {
 
@@ -26,6 +26,9 @@ public class InsertSortApp {
 		
 		System.out.println(arr.median());
 		
+		arr.noDups();
+		
+		arr.display();
 	}
 
 }
