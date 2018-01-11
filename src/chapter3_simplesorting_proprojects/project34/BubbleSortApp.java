@@ -20,7 +20,7 @@ public class BubbleSortApp {
 		
 		arr.display();
 		
-		arr.bubbleSort();
+		arr.OddEvenSort();
 		
 		arr.display();
 	}
