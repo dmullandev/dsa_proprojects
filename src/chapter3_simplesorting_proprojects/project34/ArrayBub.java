@@ -19,7 +19,25 @@ public class ArrayBub {
 	}
 	
 	public void OddEvenSort() {
-		
+		for(int i=0; i<nElems; i++) {
+			if(i % 2 == 0) { //i is even
+				for(int j=2; j<nElems; j+=2) {
+					if(a[j] < a[j-1]) {
+						long temp = a[j];
+						a[j] = a[j-1];
+						a[j-1] = temp;
+					}
+				}
+			}else {
+				for(int j=1; j<nElems;j+=2) {
+					if(a[j] < a[j-1]) {
+						long temp = a[j];
+						a[j] = a[j-1];
+						a[j-1] = temp;
+					}
+				}
+			}
+		}
 	}
 	
 	public void insert(long value) {
