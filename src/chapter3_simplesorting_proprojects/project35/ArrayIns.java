@@ -27,6 +27,21 @@ public class ArrayIns {
 		}
 		System.out.println("");
 	}
+//random data
+//	77 99 44 55 22 88 11 0 66 33 
+//	Copies 58 Comparisons 67 Total = 125
+//	0 11 22 33 44 55 66 77 88 99
+	
+//inversely sorted
+//	99 88 77 66 55 44 33 22 11 0 
+//	Copies 72 Comparisons 90 Total = 162
+//	0 11 22 33 44 55 66 77 88 99
+	
+//partially sorted
+//	0 22 11 33 88 55 66 77 44 99 
+//	Copies 35 Comparisons 25 Total = 60
+//	0 11 22 33 44 55 66 77 88 99 
+
 	
 	public void insertionSort() {
 		int in, out;
@@ -34,19 +49,24 @@ public class ArrayIns {
 		int copies = 0, comparisons = 0;
 		
 		for(out=1; out<nElems; out++) {
-			comparisons++;
 			long temp = a[out];
 			copies++;
 			in = out;
 			copies++;
-			while(in>0 && a[in-1] >= temp) {
-				comparisons+=2;
-				a[in] = a[in-1];
-				copies++;
-				--in;
+			while(in>0) {
+				if(a[in-1] >= temp) {
+					comparisons+=2;
+					a[in] = a[in-1];
+					copies++;
+					--in;
+				}else {
+					comparisons++;
+					break;
+				}				
 			}
 			a[in] = temp;
 			copies++;
 		}
+		System.out.println("Copies " + copies + " " + "Comparisons " + comparisons + " " + "Total = " + (copies+comparisons));
 	}
 }
