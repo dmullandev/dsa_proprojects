@@ -32,20 +32,34 @@ public class ArrayIns {
 		System.out.println("");
 	}
 	
-	public void insertionSort() {
+	public void insertionSort() { //project36 duplicates marked during sort, size reduced and array items shifted down
 		int in,out;
 		
 		for(out=1; out<nElems;out++) {
+
+			if(a[out]==a[out-1] || a[out] == a[out+1]) { //mark
+				a[out] = -1;
+			}
 			long temp = a[out];
 			in = out;
-			
 			while(in>0 && a[in-1] >=temp) {
 				a[in] = a[in-1];
 				--in;
 			}
+			
 			a[in] = temp;
 		}
+		
+		if(a[0] == -1) {//shift array contents down, removing -1 (dupes)
+			int k=0; 	
+			while(a[k] == -1) { //find non-duplicates beginning
+				k++;
+			}
+			nElems-=k;
+			for(int i=0; i<nElems; i++,k++) { //might be better to copy into new array then replace original
+				a[i] = a[k];
+			}
+			
+		}
 	}
-	
-	
 }
