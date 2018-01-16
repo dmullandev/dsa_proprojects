@@ -23,6 +23,33 @@ public class Queue {
 		nItems = 0;
 	}
 	
+	public void displayQueue() {
+		if(isEmpty()) {
+			System.out.print("Array Empty");
+		}else if(nItems==1) {
+			System.out.print(queArray[front]);
+		}else {
+			int current = front;
+			if(rear == -1) {
+				while(current < maxSize) {
+					System.out.print(queArray[current] + " ");
+					current++;
+				}
+			}else {
+				while(current != rear) {
+					if(current == maxSize-1) {
+						System.out.print(queArray[current] + " ");
+						current=0;
+					}else {
+						System.out.print(queArray[current] + " ");
+						current++;
+					}				
+				}
+				System.out.print(queArray[current]);
+			}
+		}
+	}
+	
 	public void insert(long j) {
 		if(rear==maxSize-1) {
 			rear = -1;

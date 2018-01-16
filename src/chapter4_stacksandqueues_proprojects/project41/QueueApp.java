@@ -18,14 +18,15 @@ public class QueueApp {
 		theQueue.insert(60);
 		theQueue.insert(70);
 		theQueue.insert(80);
-		
-		while(!theQueue.isEmpty()) {
-			long n = theQueue.remove();
-			System.out.print(n);
-			System.out.print(" ");
-		}
-		
-		System.out.println("");
+
+		theQueue.remove();
+//		
+//		while(!theQueue.isEmpty()) {
+//			long n = theQueue.remove();
+//			System.out.print(n);
+//			System.out.print(" ");
+//		}
+		theQueue.displayQueue();
 	}
 
 }
