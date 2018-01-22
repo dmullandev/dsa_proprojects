@@ -45,30 +45,75 @@ public class Dequeue {
 		return dequeArr[rear];
 	}
 	
-	public void insertLeft(int value) {
-		if(nItems==maxSize) {//full
-			System.out.println("Array is full");
-		}else if(front==0) {//wrap around
-			if(rear==-1) {//start of array
-				rear=0;
-			}
-			dequeArr[maxSize-1] = value;
-			front = maxSize-1;
-			nItems++;
-		}else {//insert
+	public boolean insertLeft(int value) {
+		if(nItems==0) {
+			dequeArr[front] = value;
+			rear=front;
+			++nItems;
+			return true;
+		}else if(front == 0 && nItems > 0){
+			front=maxSize-1;
+			dequeArr[front]= value;
+			++nItems;
+			return true;			
+		}else if(front > 0){
 			dequeArr[--front] = value;
-			nItems++;
-		}
+			++nItems;
+			return true;
+		}		
+		return false;
 	}
-	public void insertRight(int value) {
+	public boolean insertRight(int value) {
 		if(rear==maxSize-1) {
 			rear=-1;
+			dequeArr[++rear] = value;
+			++nItems;
+			return true;
+		}else if(rear==-1){
+			dequeArr[++rear] = value;
+			++nItems;
+			return true;
 		}
-		dequeArr[++rear] = value;
-		nItems++;
+		if(nItems>0) {
+			dequeArr[++rear] = value;
+			++nItems;
+			return true;
+		}
+		return false;
 	}
 	
-//	public long removeLeft() {return 1;}
-//	public long removeRight() {return 1;}
+	public long removeLeft() {
+		if(isEmpty()) {
+			return -1;
+		}
+		
+		if(front == maxSize-1) {
+			long temp = dequeArr[front];
+			dequeArr[front] = 0;
+			front = 0;
+			--nItems;
+			return temp;
+		}
+		long temp = dequeArr[front++];
+		dequeArr[front-1] = 0;
+		--nItems;
+		return temp;		
+	}
+	public long removeRight() {
+		if(isEmpty()) {
+			return -1;
+		}
+		
+		if(rear == 0 && nItems > 0) {
+			long temp = dequeArr[rear];
+			dequeArr[rear] = 0;
+			rear = maxSize-1;
+			--nItems;
+			return temp;
+		}
+		long temp = dequeArr[rear--];
+		--nItems;
+		return temp;	
+	}
 	
 }
