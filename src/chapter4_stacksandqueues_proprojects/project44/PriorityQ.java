@@ -18,25 +18,30 @@ private int nItems;
 	}
 	
 	public void insert(long item) {
-		int j;
-		
-		if(nItems==0) {
-			queArray[nItems++] = item;
-		}else {
-			for(j=nItems-1;j>=0;j--) {
-				if(item > queArray[j]) {
-					queArray[j+1] = queArray[j];
-				}else {
-					break;
-				}
-			}
-			queArray[j+1] = item;
-			nItems++;
+		queArray[nItems++] = item;
+	}
+	
+	public void displayPriorityQ() {
+		while(!isEmpty()) {
+			System.out.print(remove() + " ");
 		}
 	}
 	
 	public long remove() {
-		return queArray[--nItems];
+		if(isEmpty()) {
+			return -1;
+		}
+		long temp = 0;
+		int k=0;
+		for(int i=0;i<maxSize;i++) {
+			if(temp < queArray[i]) {
+				k = i;
+				temp = queArray[i];
+			}
+		}
+		queArray[k] = 0;
+		nItems--;
+		return temp;
 	}
 	
 	public long peekMin() {
