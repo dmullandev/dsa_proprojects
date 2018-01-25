@@ -14,14 +14,14 @@ package chapter4_stacksandqueues_proprojects.project45;
 
 public class Queue {
 private int maxSize;
-private long[] queArray;
+private Customer[] queArray;
 private int front;
 private int rear;
 private int nItems;
 
 	public Queue(int s) {
 		maxSize = s;
-		queArray = new long[maxSize];
+		queArray = new Customer[maxSize];
 		front = 0;
 		rear = -1;
 		nItems = 0;
@@ -31,47 +31,68 @@ private int nItems;
 		if(isEmpty()) {
 			System.out.print("Array Empty");
 		}else if(nItems==1) {
-			System.out.print(queArray[front]);
+			Customer cus = queArray[front];
+			System.out.print(front + ":" + cus.getGroceries());
 		}else {
 			int current = front;
 			if(rear == -1) {
 				while(current < maxSize) {
-					System.out.print(queArray[current] + " ");
+					Customer cus = queArray[current];
+					System.out.print(current + ":" + cus.getGroceries() + " ");
 					current++;
 				}
 			}else {
 				while(current != rear) {
 					if(current == maxSize-1) {
-						System.out.print(queArray[current] + " ");
+						Customer cus = queArray[current];
+						System.out.print(current + ":" + cus.getGroceries() + " ");
 						current=0;
 					}else {
-						System.out.print(queArray[current] + " ");
+						Customer cus = queArray[current];
+						System.out.print(current + ":" + cus.getGroceries() + " ");
 						current++;
 					}				
 				}
-				System.out.print(queArray[current]);
+				Customer cus = queArray[current];
+				System.out.print(current + ":" + cus.getGroceries() + " ");
+			}
+		}
+		System.out.println();
+		System.out.println();
+	}
+	
+	public void time() {
+		if(nItems==0) {
+			
+		}else {
+			Customer temp = queArray[front];
+			int gr = temp.getGroceries();
+			if(gr==1) {
+				remove();
+			}else {
+				queArray[front].decrementGroceries();
 			}
 		}
 	}
 	
-	public void insert(long j) {
+	public void insert() {
+		Customer cust = new Customer();
 		if(rear == maxSize-1) {
 			rear = -1;
 		}
-		queArray[++rear] = j;
+		queArray[++rear] = cust;
 		nItems++;
 	}
 	
-	public long remove() {
-		long temp = queArray[front++];
+	public void remove() {
+		front++;
 		if(front == maxSize) {
 			front = 0;
 		}
 		nItems--;
-		return temp;
 	}
 	
-	public long peekFront() {
+	public Customer peekFront() {
 		return queArray[front];
 	}
 	
