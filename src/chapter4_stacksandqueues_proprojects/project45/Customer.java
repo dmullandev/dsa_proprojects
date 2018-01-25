@@ -20,7 +20,7 @@ Random rand = new Random();
 			groceries = 1;
 			return 1;
 		}
-		int temp = groceries--;
+		groceries--;
 		return groceries;
 	}
 }
