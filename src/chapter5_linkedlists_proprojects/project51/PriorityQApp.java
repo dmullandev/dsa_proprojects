@@ -12,7 +12,17 @@ public class PriorityQApp {
 		theQ.insert(15);
 		theQ.insert(16);
 		theQ.display();
-
+		
+		System.out.println();		
+		System.out.print(theQ.getSize());
+		
+		theQ.remove();
+		
+		System.out.println();
+		System.out.print(theQ.getSize());
+		
+		System.out.println();
+		theQ.display();
 	}
 
 }

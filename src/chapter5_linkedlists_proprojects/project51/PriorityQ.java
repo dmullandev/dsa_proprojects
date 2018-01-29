@@ -48,9 +48,9 @@ public class PriorityQ {
 			}else {
 				previous.next = newNode;
 				newNode.next = current;
-			}			
-			nItems++;
+			}
 		}
+		nItems++;
 	}
 	
 	public Node remove() {
@@ -64,6 +64,7 @@ public class PriorityQ {
 		}else {
 			first = null;
 		}
+		--nItems;
 		return temp;
 	}
 }
