@@ -63,7 +63,7 @@ private int nItems;
 	
 	public void time() {
 		if(nItems==0) {
-			
+			System.out.print("empty");
 		}else {
 			Customer temp = queArray[front];
 			int gr = temp.getGroceries();
