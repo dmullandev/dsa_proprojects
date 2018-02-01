@@ -12,21 +12,22 @@ public class CircularListApp {
 		
 		theClist.display();
 		
+		theClist.step();
+		theClist.step();
+		theClist.step();
+		theClist.step();
+		
 		theClist.insert(6);
 		theClist.insert(7);
+		theClist.insert(8);
 		
 		theClist.display();
 		
 		theClist.step();
-		theClist.step();
-		theClist.step();
-		theClist.step();
-		theClist.step();
-		theClist.step();
 		
-		theClist.insert(8);
-		theClist.remove();
+		theClist.insert(9);
+		theClist.insert(10);
+		
 		theClist.display();
 	}
-
 }

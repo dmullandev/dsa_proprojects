@@ -47,41 +47,42 @@ public class CircularList {
 	
 	public void insert(int value) {
 		Node newNode = new Node(value);
-		
-		if(first==null) {//empty
+		if(first==null) {
 			first = newNode;
 			last = newNode;
 			last.next = first;
-			current = last;
-		}else if(current==last){//"end of list"
-			current.next = newNode;
-			newNode.next = first;
+			current = first;
+		}else if(current.next == last) {
+			last.next = newNode;
 			last = newNode;
-		}else {//downstream of current
-			Node temp = current.next;
-			newNode.next = temp;
+			newNode.next = first;
+		}else if(current.next == first) {
+			last.next = newNode;
+			newNode.next = first;
+			first = newNode;
+		}else {
+			newNode.next = current.next;
 			current.next = newNode;
-		}		
-		++nItems;
+		}
 	}
 	
 	public Node remove() {
 		Node temp;
-		if(current==first) {
-			if(first.next==null) {
-				temp = first;
-				first = null;
-				last = null;
-				current = null;
-			}else {
-				temp = first.next;
-				first = temp.next;
-				current = first;
-			}
+		if(current.next==null) {//last node
+			temp = current;
+			first = null;
+			last = null;
+			current = null;
+		}else if(current.next == last) {
+			temp = last;
+			current.next = first;
+			last = current;
+		}else if(current.next == first) {
+			temp = first;
+			first = first.next;			
 		}else {
-			if(current.next==last)
-			current.next = null;
-			current = temp.next;
+			temp = current.next;
+			current.next = current.next.next;
 		}
 		temp.next = null;
 		return temp;
