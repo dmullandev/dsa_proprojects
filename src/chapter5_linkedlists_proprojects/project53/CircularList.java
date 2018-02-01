@@ -30,7 +30,7 @@ public class CircularList {
 		current = first;
 		nItems = 0;
 	}
-	
+
 	public int size() {
 		return nItems;
 	}
@@ -42,7 +42,6 @@ public class CircularList {
 			temp = temp.next;
 		}
 		temp.displayNode();
-		System.out.println();
 	}
 	
 	public void insert(int value) {
@@ -52,18 +51,22 @@ public class CircularList {
 			last = newNode;
 			last.next = first;
 			current = first;
-		}else if(current.next == last) {
-			last.next = newNode;
+		}else if(first==last){
+			current.next = newNode;
 			last = newNode;
 			newNode.next = first;
+		}else if(current.next == last) {
+			newNode.next = last;
+			current.next = newNode;
 		}else if(current.next == first) {
-			last.next = newNode;
 			newNode.next = first;
-			first = newNode;
+			last.next = newNode;
+			last = newNode;
 		}else {
 			newNode.next = current.next;
 			current.next = newNode;
 		}
+		nItems++;
 	}
 	
 	public Node remove() {
@@ -73,13 +76,14 @@ public class CircularList {
 			first = null;
 			last = null;
 			current = null;
-		}else if(current.next == last) {
+		}else if(current.next == last) {//if current before last
 			temp = last;
 			current.next = first;
 			last = current;
-		}else if(current.next == first) {
+		}else if(current.next == first) {//if current is last
 			temp = first;
-			first = first.next;			
+			first = first.next;
+			current.next = first;
 		}else {
 			temp = current.next;
 			current.next = current.next.next;
@@ -92,8 +96,8 @@ public class CircularList {
 		return (first==null);
 	}
 	
-	public Node peek() {
-		return current;
+	public void peek() {
+		System.out.println(current.value);
 	}
 	
 	public void step() {

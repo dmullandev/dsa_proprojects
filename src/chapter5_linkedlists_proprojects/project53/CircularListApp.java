@@ -10,23 +10,20 @@ public class CircularListApp {
 		theClist.insert(4);
 		theClist.insert(5);
 		
-		theClist.display();
 		
 		theClist.step();
 		theClist.step();
 		theClist.step();
 		theClist.step();
+		theClist.peek();
 		
 		theClist.insert(6);
-		theClist.insert(7);
-		theClist.insert(8);
 		
-		theClist.display();
-		
+		theClist.peek();
 		theClist.step();
-		
-		theClist.insert(9);
-		theClist.insert(10);
+		theClist.peek();
+		theClist.step();
+		theClist.peek();
 		
 		theClist.display();
 	}
