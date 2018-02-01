@@ -89,6 +89,7 @@ public class CircularList {
 			current.next = current.next.next;
 		}
 		temp.next = null;
+		nItems--;
 		return temp;
 	}
 	
